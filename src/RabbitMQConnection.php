@@ -21,7 +21,7 @@ class RabbitMQConnection
         $this->init();
     }
 
-    public function createConnection(): static
+    public function connect(): AMQPStreamConnection
     {
         self::$connection = new AMQPStreamConnection(
             $this->getHost(),
@@ -31,7 +31,7 @@ class RabbitMQConnection
             $this->getVHost()
         );
 
-        return $this;
+        return $this->connection();
     }
 
     /**
